@@ -53,6 +53,7 @@
   .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(24px, 5vw, 72px); }
   .hero-title { font-size: clamp(30px, 5vw, 56px); }
   .section-title { font-size: clamp(28px, 4vw, 40px); }
+  #home, #about, #gallery, #services, #contact { scroll-margin-top: 84px; }
   @media (max-width: 900px) {
     .grid-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .grid-2 { grid-template-columns: 1fr; }
@@ -67,7 +68,9 @@
     .nav-row { padding: 16px clamp(16px,5vw,64px) !important; }
     .nav-links { gap: 13px !important; font-size: 12px !important; }
     .brand-logo { font-size: 19px !important; }
-    .hero-box { height: 480px !important; }
+    .hero-box { height: 560px !important; align-items: center !important; }
+    .hero-tagline { font-size: 10.5px !important; letter-spacing: 1.5px !important; }
+    #home, #about, #gallery, #services, #contact { scroll-margin-top: 68px; }
     .section-pad { padding: 60px clamp(16px,5vw,64px) !important; }
     .footer-row { flex-direction: column; text-align: center; gap: 22px !important; }
     .footer-col { align-items: center !important; }
@@ -96,12 +99,12 @@
 
   <!-- HERO -->
   <div id="home" class="hero-box" style="position: relative; width: 100%; height: 620px; overflow: hidden; display: flex; align-items: flex-end;">
-    <img src="images/hero.jpg" alt="הדמיית מתחם מגורים של מָקוֹם אדריכלים" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 68%;">
-    <div style="position: absolute; inset: 0; background: linear-gradient(0deg, rgba(15,13,10,.9) 0%, rgba(15,13,10,.55) 45%, rgba(15,13,10,.22) 100%);"></div>
+    <img src="images/hero.jpg" alt="הדמיית מתחם מגורים של מָקוֹם אדריכלים" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 68%; filter: brightness(.6) saturate(1.08);">
+    <div style="position: absolute; inset: 0; background: linear-gradient(0deg, rgba(10,9,7,.95) 0%, rgba(10,9,7,.6) 42%, rgba(10,9,7,.15) 78%, rgba(10,9,7,.35) 100%);"></div>
     <div style="position: relative; padding: 0 clamp(20px,5vw,64px) 72px; max-width: 760px;">
-      <div style="color: #e7d9c9; font-size: 14px; letter-spacing: 3px; margin-bottom: 16px;">אדריכלות · עיצוב פנים · תכנון ופיתוח שטח</div>
-      <h1 class="hero-title" style="color: #fff; line-height: 1.18; margin-bottom: 20px;">פתרון המשוואה האדריכלית</h1>
-      <p style="color: #e9e5dd; font-size: 17px; line-height: 1.7; max-width: 560px; margin-bottom: 30px;">משרד מָקוֹם אדריכלים מלווה פרויקטים פרטיים וציבוריים מהרעיון הראשוני ועד למסירת המפתח — בדיוק תכנוני ובתשומת לב לכל פרט.</p>
+      <div class="hero-tagline" style="color: #f0c9a3; font-size: 14px; letter-spacing: 3px; margin-bottom: 16px; text-shadow: 0 2px 14px rgba(0,0,0,.6); white-space: nowrap;">אדריכלות · עיצוב פנים · תכנון ופיתוח שטח</div>
+      <h1 class="hero-title" style="color: #fff; line-height: 1.18; margin-bottom: 20px; text-shadow: 0 4px 28px rgba(0,0,0,.55);">פתרון המשוואה האדריכלית</h1>
+      <p style="color: #f2efe9; font-size: 17px; line-height: 1.7; max-width: 560px; margin-bottom: 30px; text-shadow: 0 2px 16px rgba(0,0,0,.6);">משרד מָקוֹם אדריכלים מלווה פרויקטים פרטיים וציבוריים מהרעיון הראשוני ועד למסירת המפתח — בדיוק תכנוני ובתשומת לב לכל פרט.</p>
       <a href="#gallery" class="btn-primary" style="display: inline-block; background: #b5623a; color: #fff; padding: 15px 32px; border-radius: 2px; font-size: 15px; font-weight: 600;">לצפייה בגלריה</a>
     </div>
   </div>
