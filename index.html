@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>מָקוֹם אדריכלים — עמוד הבית</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700&family=Heebo:wght@300;400;500;600;700&display=swap">
+<style>
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; font-family: 'Heebo', sans-serif; background: #f7f5f1; color: #232019; overflow-x: hidden; }
+  h1, h2, h3 { font-family: 'Frank Ruhl Libre', serif; font-weight: 500; margin: 0; }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+  .wrap { width: 100%; max-width: 1280px; margin: 0 auto; padding-inline: clamp(20px, 5vw, 64px); box-sizing: border-box; }
+  .navlink { position: relative; padding: 6px 2px; transition: opacity .2s; white-space: nowrap; }
+  .navlink:hover { opacity: .6; }
+  .btn-primary { transition: background .25s, transform .2s; }
+  .btn-primary:hover { background: #232019 !important; color: #f7f5f1 !important; transform: translateY(-1px); }
+  .service-card { position: relative; overflow: hidden; border: 1px solid rgba(35,32,25,.12); border-radius: 4px; transition: border-color .25s; }
+  .service-card:hover { border-color: #b5623a; }
+  .svc-label { display: flex; flex-direction: column; gap: 14px; padding: 32px 24px; }
+  .svc-overlay { position: absolute; inset: 0; background: #b5623a; color: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; text-align: center; padding: 24px; transform: translateX(105%); transition: transform .65s cubic-bezier(.16,.7,.2,1); cursor: pointer; }
+  .service-card:hover .svc-overlay { transform: translateX(0); }
+  .svc-overlay-title { font-family: 'Frank Ruhl Libre', serif; font-size: 22px; }
+  .svc-overlay-sub { font-size: 13px; opacity: .85; }
+  .team-card { display: flex; gap: 20px; align-items: flex-start; background: #fff; border-radius: 4px; padding: 26px; box-shadow: 0 8px 24px rgba(35,32,25,.08); }
+  .team-photo { width: 96px; height: 96px; min-width: 96px; border-radius: 50%; overflow: hidden; }
+  .team-photo img { width: 100%; height: 100%; object-fit: cover; }
+  input, textarea { font-family: 'Heebo', sans-serif; }
+  ::selection { background: #b5623a; color: #fff; }
+
+  .gsel { position: absolute; opacity: 0; pointer-events: none; }
+  .main-frame { background: #e7e2d8; }
+  .main-frame .slide { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .5s ease; }
+  .thumb { flex: 0 0 auto; width: 76px; height: 58px; border-radius: 3px; overflow: hidden; cursor: pointer; scroll-snap-align: start; opacity: .5; outline: 2px solid transparent; outline-offset: 2px; transition: opacity .25s ease, outline-color .25s ease; }
+  .thumb:hover { opacity: .8; }
+#g1:checked ~ .main-frame .slide[data-for="g1"],
+  #g2:checked ~ .main-frame .slide[data-for="g2"],
+  #g3:checked ~ .main-frame .slide[data-for="g3"],
+  #g4:checked ~ .main-frame .slide[data-for="g4"],
+  #g5:checked ~ .main-frame .slide[data-for="g5"],
+  #g6:checked ~ .main-frame .slide[data-for="g6"] { opacity: 1; }
+#g1:checked ~ .thumbs-row label[for="g1"],
+  #g2:checked ~ .thumbs-row label[for="g2"],
+  #g3:checked ~ .thumbs-row label[for="g3"],
+  #g4:checked ~ .thumbs-row label[for="g4"],
+  #g5:checked ~ .thumbs-row label[for="g5"],
+  #g6:checked ~ .thumbs-row label[for="g6"] { opacity: 1; outline-color: #b5623a; }
+
+  .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 2.5vw, 32px); }
+  .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(24px, 5vw, 72px); }
+  .hero-title { font-size: clamp(30px, 5vw, 56px); }
+  .section-title { font-size: clamp(28px, 4vw, 40px); }
+  @media (max-width: 900px) {
+    .grid-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid-2 { grid-template-columns: 1fr; }
+    .nav-links { gap: 20px !important; font-size: 13.5px !important; }
+    .hero-box { padding: 0 clamp(20px,5vw,64px) 40px !important; }
+    .stat-strip { gap: 48px !important; }
+    .team-card { flex-direction: column; align-items: center; text-align: center; }
+  }
+  @media (max-width: 620px) {
+    .grid-3 { grid-template-columns: 1fr; }
+    .thumb { width: 60px !important; height: 46px !important; }
+    .nav-row { padding: 16px clamp(16px,5vw,64px) !important; }
+    .nav-links { gap: 13px !important; font-size: 12px !important; }
+    .brand-logo { font-size: 19px !important; }
+    .hero-box { height: 480px !important; }
+    .section-pad { padding: 60px clamp(16px,5vw,64px) !important; }
+    .footer-row { flex-direction: column; text-align: center; gap: 22px !important; }
+    .footer-col { align-items: center !important; }
+  }
+
+</style>
+</head>
+<body>
+
+<div style="width: 100%; min-height: 100vh; display: flex; flex-direction: column; background: #f7f5f1;">
+
+  <!-- NAV -->
+  <div class="nav-row" style="position: sticky; top: 0; z-index: 20; width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 18px clamp(20px,5vw,64px); background: rgba(247,245,241,.94); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(35,32,25,.08); flex-wrap: wrap; gap: 10px;">
+    <a href="#home" class="brand-logo" style="display: flex; align-items: center; gap: 10px; font-family: 'Frank Ruhl Libre', serif; font-size: 22px; letter-spacing: .5px;">
+      <img src="images/logo.jpg" alt="לוגו מָקוֹם אדריכלים" style="width: 38px; height: 38px; object-fit: contain;">
+      מָקוֹם <span style="color: #b5623a;">׀</span> אדריכלים
+    </a>
+    <div class="nav-links" style="display: flex; gap: 30px; font-size: 15px; font-weight: 500;">
+      <a class="navlink" href="#home">עמוד הבית</a>
+      <a class="navlink" href="#about">אודות</a>
+      <a class="navlink" href="#gallery">גלריה</a>
+      <a class="navlink" href="#services">שירותים</a>
+      <a class="navlink" href="#contact">צור קשר</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div id="home" class="hero-box" style="position: relative; width: 100%; height: 620px; overflow: hidden; display: flex; align-items: flex-end;">
+    <img src="images/hero.jpg" alt="הדמיית מתחם מגורים של מָקוֹם אדריכלים" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 68%;">
+    <div style="position: absolute; inset: 0; background: linear-gradient(0deg, rgba(15,13,10,.9) 0%, rgba(15,13,10,.55) 45%, rgba(15,13,10,.22) 100%);"></div>
+    <div style="position: relative; padding: 0 clamp(20px,5vw,64px) 72px; max-width: 760px;">
+      <div style="color: #e7d9c9; font-size: 14px; letter-spacing: 3px; margin-bottom: 16px;">אדריכלות · עיצוב פנים · תכנון ופיתוח שטח</div>
+      <h1 class="hero-title" style="color: #fff; line-height: 1.18; margin-bottom: 20px;">פתרון המשוואה האדריכלית</h1>
+      <p style="color: #e9e5dd; font-size: 17px; line-height: 1.7; max-width: 560px; margin-bottom: 30px;">משרד מָקוֹם אדריכלים מלווה פרויקטים פרטיים וציבוריים מהרעיון הראשוני ועד למסירת המפתח — בדיוק תכנוני ובתשומת לב לכל פרט.</p>
+      <a href="#gallery" class="btn-primary" style="display: inline-block; background: #b5623a; color: #fff; padding: 15px 32px; border-radius: 2px; font-size: 15px; font-weight: 600;">לצפייה בגלריה</a>
+    </div>
+  </div>
+
+  <!-- ABOUT / INTRO -->
+  <div id="about" class="section-pad" style="padding: 100px clamp(20px,5vw,64px) 70px;">
+    <div style="max-width: 760px;">
+      <div style="color: #b5623a; font-size: 14px; letter-spacing: 2px; margin-bottom: 12px;">אודותינו</div>
+      <h2 class="section-title" style="margin-bottom: 26px;">פתרון המשוואה האדריכלית</h2>
+      <p style="font-size: 17px; line-height: 1.85; color: #3c372f; margin-bottom: 18px;">משרדנו הוקם בשנת 2003 ועוסק מאז במגוון רחב של סוגי פרויקטים. מנהל ומייסד המשרד הוא דניאל שרון, אדריכל בוגר בצלאל משנת 1999, בצוות התכנון אדריכלים והנדסאים.</p>
+      <p style="font-size: 17px; line-height: 1.85; color: #3c372f; margin-bottom: 18px;">למשרדנו נסיון עשיר בתכנון אדריכלי מוקפד ואיכותי של מבנים שונים מסוגים שונים בסקטור הפרטי והציבורי: מגורים בבניה רוויה ופרטית, מבנים לצרכים צבאיים, מבני ציבור, מסחר ותעשיה, עיצוב פנים, רישוי בניה ותב"עות, וניהול תכנון הפרויקט ופיקוח עליון.</p>
+      <p style="font-size: 17px; line-height: 1.85; color: #3c372f;">היכולת להתמודד בהצלחה עם פרוגרמות מגוונות מאפשרת לנו ללוות את לקוחותינו ליצירת פרויקט מוצלח, המפיק את המרב מהתנאים והפרוגרמה.</p>
+    </div>
+  </div>
+
+  <!-- TEAM -->
+  <div class="section-pad" style="padding: 0 clamp(20px,5vw,64px) 90px;">
+    <div style="margin-bottom: 30px;">
+      <div style="color: #b5623a; font-size: 14px; letter-spacing: 2px; margin-bottom: 10px;">מי אנחנו</div>
+      <h2 class="section-title">בעלי המשרד</h2>
+    </div>
+    <div class="grid-2">
+      <div class="team-card">
+        <div class="team-photo"><img src="images/team-daniel.jpg" alt="דניאל שרון, אדריכל ומנהל המשרד"></div>
+        <div>
+          <h3 style="font-size: 19px; margin-bottom: 10px;">דניאל שרון</h3>
+          <p style="font-size: 15px; line-height: 1.75; color: #6b6558;">הבעלים ומנהל המשרד, בוגר תואר ראשון באדריכלות מבצלאל משנת 1999, ובעל ניסיון רב במגוון תחומים בתכנון האדריכלי. בנוסף, דניאל הוא בוגר של קורס ביזמות עיסקית בקמפוס של סטף וורטהיימר בתפן, וכן קורס ביזמות נדל"ן.</p>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo"><img src="images/team-yehonatan.jpg" alt="יהונתן שרון, הנדסאי אדריכלות ושותף"></div>
+        <div>
+          <h3 style="font-size: 19px; margin-bottom: 10px;">יהונתן שרון</h3>
+          <p style="font-size: 15px; line-height: 1.75; color: #6b6558;">שותף, הנדסאי אדריכלות בעל ניסיון עשיר של מעל 20 שנים בתכנון מבנים שונים עם התמחות בבניה לסקטור הפרטי והציבורי, תב"עות, רישוי בניה ועוד. מאז סיום לימודיו בשנת 1995 עבד יונתן במשרדי אדריכלים בירושלים, ומשנת 2002 הוא עצמאי.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STAT STRIP -->
+  <div class="stat-strip" style="display: flex; justify-content: center; gap: 90px; padding: 0 clamp(20px,5vw,64px) 70px; flex-wrap: wrap;">
+    <div style="text-align: center;"><div style="font-family: 'Frank Ruhl Libre', serif; font-size: 38px; color: #b5623a;">2003</div><div style="font-size: 13px; color: #6b6558; margin-top: 6px;">שנת הקמת המשרד</div></div>
+    <div style="text-align: center;"><div style="font-family: 'Frank Ruhl Libre', serif; font-size: 38px; color: #b5623a;">50+</div><div style="font-size: 13px; color: #6b6558; margin-top: 6px;">פרויקטים שתוכננו</div></div>
+    <div style="text-align: center;"><div style="font-family: 'Frank Ruhl Libre', serif; font-size: 38px; color: #b5623a;">100%</div><div style="font-size: 13px; color: #6b6558; margin-top: 6px;">ליווי אישי מקצה לקצה</div></div>
+  </div>
+
+  <!-- GALLERY -->
+  <div id="gallery" class="section-pad" style="padding: 30px 0 110px; display: flex; flex-direction: column; gap: 36px;">
+    <div class="wrap" style="text-align: center;">
+      <div style="color: #b5623a; font-size: 14px; letter-spacing: 2px; margin-bottom: 10px;">מתוך העבודות שלנו</div>
+      <h2 class="section-title">גלריה</h2>
+      <p style="font-size: 14px; color: #6b6558; margin-top: 10px;">בחרו תמונה מהקרוסלה לצפייה מוגדלת</p>
+    </div>
+
+    <div class="wrap gallery-viewer" style="max-width: 820px;">
+      <input type="radio" name="gsel" id="g1" class="gsel" checked>
+      <input type="radio" name="gsel" id="g2" class="gsel">
+      <input type="radio" name="gsel" id="g3" class="gsel">
+      <input type="radio" name="gsel" id="g4" class="gsel">
+      <input type="radio" name="gsel" id="g5" class="gsel">
+      <input type="radio" name="gsel" id="g6" class="gsel">
+
+      <div class="main-frame" style="position: relative; width: 100%; aspect-ratio: 4/3; border-radius: 4px; overflow: hidden; box-shadow: 0 10px 30px rgba(35,32,25,.14);">
+        <img class="slide" data-for="g1" src="images/gallery-1.jpg" alt="הדמיית מבנה ציבורי של מָקוֹם אדריכלים" loading="lazy">
+        <img class="slide" data-for="g2" src="images/gallery-2.jpg" alt="בית פרטי שתוכנן על ידי מָקוֹם אדריכלים" loading="lazy">
+        <img class="slide" data-for="g3" src="images/gallery-3.jpg" alt="הדמיית שכונת מגורים של מָקוֹם אדריכלים" loading="lazy">
+        <img class="slide" data-for="g4" src="images/gallery-4.jpg" alt="הדמיית מתחם מגורים של מָקוֹם אדריכלים" loading="lazy">
+        <img class="slide" data-for="g5" src="images/gallery-5.jpg" alt="הדמיית בניין מגורים של מָקוֹם אדריכלים" loading="lazy">
+        <img class="slide" data-for="g6" src="images/gallery-6.jpg" alt="בניין מגורים בביצוע מָקוֹם אדריכלים" loading="lazy">
+      </div>
+
+      <div class="thumbs-row" style="display: flex; justify-content: center; gap: 8px; margin-top: 16px; overflow-x: auto; padding: 2px 2px 10px; scroll-snap-type: x proximity;">
+        <label for="g1" class="thumb"><img src="images/gallery-1.jpg" alt="" loading="lazy" style="width:100%; height:100%; object-fit:cover;"></label>
+        <label for="g2" class="thumb"><img src="images/gallery-2.jpg" alt="" loading="lazy" style="width:100%; height:100%; object-fit:cover;"></label>
+        <label for="g3" class="thumb"><img src="images/gallery-3.jpg" alt="" loading="lazy" style="width:100%; height:100%; object-fit:cover;"></label>
+        <label for="g4" class="thumb"><img src="images/gallery-4.jpg" alt="" loading="lazy" style="width:100%; height:100%; object-fit:cover;"></label>
+        <label for="g5" class="thumb"><img src="images/gallery-5.jpg" alt="" loading="lazy" style="width:100%; height:100%; object-fit:cover;"></label>
+        <label for="g6" class="thumb"><img src="images/gallery-6.jpg" alt="" loading="lazy" style="width:100%; height:100%; object-fit:cover;"></label>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <div id="services" class="section-pad" style="padding: 0 clamp(20px,5vw,64px) 110px; display: flex; flex-direction: column; gap: 50px;">
+    <div style="text-align: center;">
+      <div style="color: #b5623a; font-size: 14px; letter-spacing: 2px; margin-bottom: 10px;">מה אנחנו עושים</div>
+      <h2 class="section-title">שירותים</h2>
+      <p style="font-size: 14px; color: #6b6558; margin-top: 10px;">לחצו על שירות ליצירת קשר</p>
+    </div>
+    <div class="grid-3">
+      <div class="service-card">
+        <div class="svc-label">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#b5623a" stroke-width="1.6"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg>
+          <h3 style="font-size: 18px;">תכנון אדריכלי</h3>
+          <p style="font-size: 14px; line-height: 1.7; color: #6b6558;">תכנון מבנים בסקטור הפרטי והציבורי — בנייה רוויה, בנייה פרטית, מבני ציבור, מסחר ותעשייה.</p>
+        </div>
+        <a href="#contact" class="svc-overlay"><span class="svc-overlay-title">צור קשר</span><span class="svc-overlay-sub">נשמח לספר לכם עוד</span></a>
+      </div>
+      <div class="service-card">
+        <div class="svc-label">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#b5623a" stroke-width="1.6"><path d="M4 4h16v16H4z"/><path d="M4 9h16M9 21V9"/></svg>
+          <h3 style="font-size: 18px;">עיצוב פנים</h3>
+          <p style="font-size: 14px; line-height: 1.7; color: #6b6558;">עיצוב חללי מגורים ועבודה המותאם אישית לאורח החיים של הלקוח.</p>
+        </div>
+        <a href="#contact" class="svc-overlay"><span class="svc-overlay-title">צור קשר</span><span class="svc-overlay-sub">נשמח לספר לכם עוד</span></a>
+      </div>
+      <div class="service-card">
+        <div class="svc-label">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#b5623a" stroke-width="1.6"><path d="M12 22c5-4 8-8 8-12a8 8 0 1 0-16 0c0 4 3 8 8 12Z"/><circle cx="12" cy="10" r="2.6"/></svg>
+          <h3 style="font-size: 18px;">תכנון גנים ונוף</h3>
+          <p style="font-size: 14px; line-height: 1.7; color: #6b6558;">תכנון נוף ופיתוח שטח בשילוב עם התכנון האדריכלי, מהקונספט ועד לביצוע.</p>
+        </div>
+        <a href="#contact" class="svc-overlay"><span class="svc-overlay-title">צור קשר</span><span class="svc-overlay-sub">נשמח לספר לכם עוד</span></a>
+      </div>
+      <div class="service-card">
+        <div class="svc-label">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#b5623a" stroke-width="1.6"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>
+          <h3 style="font-size: 18px;">רישוי בנייה ותב"עות</h3>
+          <p style="font-size: 14px; line-height: 1.7; color: #6b6558;">ליווי מלא מול הרשויות — היתרי בנייה, תוכניות בניין עיר וכל תהליך הרישוי.</p>
+        </div>
+        <a href="#contact" class="svc-overlay"><span class="svc-overlay-title">צור קשר</span><span class="svc-overlay-sub">נשמח לספר לכם עוד</span></a>
+      </div>
+      <div class="service-card">
+        <div class="svc-label">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#b5623a" stroke-width="1.6"><path d="M12 2 3 7l9 5 9-5-9-5Z"/><path d="M3 12l9 5 9-5M3 17l9 5 9-5"/></svg>
+          <h3 style="font-size: 18px;">ליווי ופיקוח</h3>
+          <p style="font-size: 14px; line-height: 1.7; color: #6b6558;">ליווי צמוד מול קבלנים ורשויות ופיקוח הנדסי לאורך כל הבנייה — מהתכנון ועד למסירה.</p>
+        </div>
+        <a href="#contact" class="svc-overlay"><span class="svc-overlay-title">צור קשר</span><span class="svc-overlay-sub">נשמח לספר לכם עוד</span></a>
+      </div>
+      <div class="service-card">
+        <div class="svc-label">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#b5623a" stroke-width="1.6"><path d="M4 4h16v16H4z"/><path d="m4 4 16 16M20 4 4 20"/></svg>
+          <h3 style="font-size: 18px;">בנייה רוויה ומסחר</h3>
+          <p style="font-size: 14px; line-height: 1.7; color: #6b6558;">תכנון פרויקטים למגזר הציבורי, המסחרי והתעשייתי בהיקפים משתנים.</p>
+        </div>
+        <a href="#contact" class="svc-overlay"><span class="svc-overlay-title">צור קשר</span><span class="svc-overlay-sub">נשמח לספר לכם עוד</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div id="contact" class="section-pad grid-2" style="padding: 90px clamp(20px,5vw,64px) 100px;">
+    <div style="display: flex; flex-direction: column; gap: 22px;">
+      <div style="color: #b5623a; font-size: 14px; letter-spacing: 2px;">בואו נדבר</div>
+      <h2 class="section-title">צור קשר</h2>
+      <p style="font-size: 16px; line-height: 1.8; color: #6b6558; max-width: 420px;">מתכננים פרויקט חדש? נשמח לשמוע על הרעיון שלכם ולבחון יחד איך אפשר להוציא אותו לפועל.</p>
+      <div class="contact-icons" style="display: flex; flex-direction: column; gap: 12px; margin-top: 10px; font-size: 15px;">
+        <div style="display: flex; gap: 10px; align-items: center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#b5623a" stroke-width="1.8"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.4 2.1L8.1 9.7a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.9 2.2Z"/></svg><span>טלפון משרד: <a href="tel:0773088411" style="font-weight:600;">077-3088411</a></span></div>
+        <div style="display: flex; gap: 10px; align-items: center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#b5623a" stroke-width="1.8"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.4 2.1L8.1 9.7a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.9 2.2Z"/></svg><span>נייד: <a href="tel:0528689601" style="font-weight:600;">052-8689601</a></span></div>
+        <div style="display: flex; gap: 10px; align-items: center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#b5623a" stroke-width="1.8"><path d="M4 20h13a2 2 0 0 0 2-2V8l-6-6H6a2 2 0 0 0-2 2v3"/><path d="M13 2v6h6"/></svg><span>פקס: 050-6811961</span></div>
+        <div style="display: flex; gap: 10px; align-items: center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#b5623a" stroke-width="1.8"><path d="M4 4h16v16H4z"/><path d="m4 6 8 6 8-6"/></svg><a href="mailto:office@makom.co.il">office@makom.co.il</a></div>
+        <div style="display: flex; gap: 10px; align-items: center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#b5623a" stroke-width="1.8"><path d="M12 21s7-6.6 7-11.5A7 7 0 0 0 5 9.5C5 14.4 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.4"/></svg><span>רח' עקיבא 1, רעננה 4326001</span></div>
+        <div style="display: flex; gap: 10px; align-items: center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#b5623a" stroke-width="1.8"><path d="M17 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2Zm-5 18a1.2 1.2 0 1 1 0-2.4 1.2 1.2 0 0 1 0 2.4Z"/></svg><a href="https://www.facebook.com/danielsharonarchitect/" target="_blank">עמוד הפייסבוק שלנו</a></div>
+      </div>
+    </div>
+    <div style="background: #fff; border-radius: 4px; padding: 36px; box-shadow: 0 8px 24px rgba(35,32,25,.08); display: flex; flex-direction: column; gap: 16px;">
+      <div style="display: flex; flex-direction: column; gap: 6px;">
+        <label for="name" style="font-size: 13px; color: #6b6558;">שם מלא</label>
+        <input id="name" type="text" placeholder="השם שלך" style="padding: 12px 14px; border: 1px solid rgba(35,32,25,.18); border-radius: 3px; font-size: 15px;">
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 6px;">
+        <label for="email" style="font-size: 13px; color: #6b6558;">אימייל</label>
+        <input id="email" type="email" placeholder="you@example.com" style="padding: 12px 14px; border: 1px solid rgba(35,32,25,.18); border-radius: 3px; font-size: 15px;">
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 6px;">
+        <label for="msg" style="font-size: 13px; color: #6b6558;">ספרו לנו על הפרויקט</label>
+        <textarea id="msg" rows="4" placeholder="כמה מילים על הפרויקט..." style="padding: 12px 14px; border: 1px solid rgba(35,32,25,.18); border-radius: 3px; font-size: 15px; resize: vertical; font-family: 'Heebo', sans-serif;"></textarea>
+      </div>
+      <button type="button" class="btn-primary" style="margin-top: 6px; background: #b5623a; color: #fff; border: none; padding: 15px; border-radius: 3px; font-size: 15px; font-weight: 600; cursor: pointer;">שליחת פנייה</button>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="background: #211d17; color: #a89f8f;">
+    <div class="footer-row wrap" style="display: flex; justify-content: space-between; gap: 40px; flex-wrap: wrap; padding: 48px clamp(20px,5vw,64px) 30px;">
+      <div class="footer-col" style="display: flex; flex-direction: column; gap: 12px; min-width: 200px;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <img src="images/logo.jpg" alt="לוגו מָקוֹם אדריכלים" style="width: 30px; height: 30px; object-fit: contain; filter: brightness(1.4);">
+          <div style="font-family: 'Frank Ruhl Libre', serif; font-size: 18px; color: #f0ece3;">מָקוֹם ׀ אדריכלים</div>
+        </div>
+        <div style="font-size: 13px; line-height: 1.7;">אדריכלות · עיצוב פנים · תכנון ופיתוח שטח</div>
+      </div>
+      <div class="footer-col" style="display: flex; flex-direction: column; gap: 8px; font-size: 13.5px; line-height: 1.9;">
+        <div>רח' עקיבא 1, רעננה 4326001</div>
+        <div>טלפון: 077-3088411 &nbsp;|&nbsp; נייד: 052-8689601</div>
+        <div>פקס: 050-6811961</div>
+        <div><a href="mailto:office@makom.co.il">office@makom.co.il</a></div>
+      </div>
+      <div class="footer-col" style="display: flex; flex-direction: column; gap: 8px; font-size: 13.5px;">
+        <a class="navlink" href="#about">אודות</a>
+        <a class="navlink" href="#gallery">גלריה</a>
+        <a class="navlink" href="#services">שירותים</a>
+        <a class="navlink" href="https://www.facebook.com/danielsharonarchitect/" target="_blank">פייסבוק</a>
+      </div>
+    </div>
+    <div style="border-top: 1px solid rgba(255,255,255,.08); padding: 18px clamp(20px,5vw,64px); text-align: center; font-size: 12.5px;">© 2026 מָקוֹם אדריכלים. כל הזכויות שמורות.</div>
+  </div>
+
+</div>
+
+<script>
+(function () {
+  var ids = ['g1', 'g2', 'g3', 'g4', 'g5', 'g6'];
+  var idx = 0;
+  var timer = null;
+
+  function setActive(i) {
+    idx = i;
+    var input = document.getElementById(ids[idx]);
+    if (input) input.checked = true;
+  }
+  function advance() {
+    setActive((idx + 1) % ids.length);
+  }
+  function restart() {
+    if (timer) clearInterval(timer);
+    timer = setInterval(advance, 3000);
+  }
+  restart();
+
+  document.addEventListener('change', function (e) {
+    var t = e.target;
+    if (!t || !t.classList || !t.classList.contains('gsel')) return;
+    var i = ids.indexOf(t.id);
+    if (i === -1) return;
+    idx = i;
+    restart();
+  });
+
+  function inViewer(el) {
+    return !!(el && el.closest && el.closest('.gallery-viewer'));
+  }
+  document.addEventListener('mouseover', function (e) {
+    if (inViewer(e.target)) { if (timer) { clearInterval(timer); timer = null; } }
+  });
+  document.addEventListener('mouseout', function (e) {
+    if (inViewer(e.target) && !inViewer(e.relatedTarget)) restart();
+  });
+})();
+</script>
+</body>
+</html>
