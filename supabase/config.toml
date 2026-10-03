@@ -1,0 +1,7 @@
+# Minimal Supabase CLI config so `supabase link` / `supabase db push`
+# can apply the migrations in supabase/migrations.
+project_id = "tagidmaze"
+
+[auth]
+# Only the admin account exists; nobody can sign up.
+enable_signup = false

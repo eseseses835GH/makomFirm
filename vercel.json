@@ -1,0 +1,3 @@
+{
+  "rewrites": [{ "source": "/myBooks/:path*", "destination": "/myBooks/index.html" }]
+}

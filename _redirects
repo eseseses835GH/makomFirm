@@ -1,0 +1,3 @@
+# Netlify / Cloudflare Pages: serve the My Books app for its deep links.
+# Real files (css/js) still win because the rule isn't forced.
+/myBooks/*  /myBooks/index.html  200
